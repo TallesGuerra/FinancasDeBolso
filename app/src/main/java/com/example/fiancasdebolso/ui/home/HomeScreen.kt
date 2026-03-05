@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import com.example.fiancasdebolso.data.local.entity.TransactionEntity
 import com.example.fiancasdebolso.ui.theme.FiancasDeBolsoTheme
 
+
 @Composable
 fun HomeScreen(viewModel: HomeViewModel) {
     val transactions by viewModel.transactions.collectAsState()
