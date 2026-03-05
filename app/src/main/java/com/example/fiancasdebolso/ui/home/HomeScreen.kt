@@ -23,12 +23,9 @@ import com.example.fiancasdebolso.data.local.entity.TransactionEntity
 import com.example.fiancasdebolso.ui.theme.FiancasDeBolsoTheme
 
 @Composable
-fun HomeScreen(
-    viewModel: HomeViewModel,
-    modifier: Modifier = Modifier
-) {
+fun HomeScreen(viewModel: HomeViewModel) {
     val transactions by viewModel.transactions.collectAsState()
-    HomeScreenContent(transactions = transactions, modifier = modifier)
+    HomeScreenContent(transactions = transactions)
 }
 
 @Composable
