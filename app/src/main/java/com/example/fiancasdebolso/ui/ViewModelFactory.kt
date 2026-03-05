@@ -1,5 +1,6 @@
 package com.example.fiancasdebolso.ui
 
+
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.fiancasdebolso.data.repository.TransactionRepository
@@ -7,6 +8,8 @@ import com.example.fiancasdebolso.domain.usecase.AddTransactionUseCase
 import com.example.fiancasdebolso.domain.usecase.DeleteTransactionUseCase
 import com.example.fiancasdebolso.domain.usecase.GetBalanceUseCase
 import com.example.fiancasdebolso.domain.usecase.GetTransactionsUseCase
+import com.example.fiancasdebolso.ui.add_transaction.AddTransactionViewModel
+import com.example.fiancasdebolso.ui.history.HistoryViewModel
 import com.example.fiancasdebolso.ui.home.HomeViewModel
 import kotlin.jvm.java
 
