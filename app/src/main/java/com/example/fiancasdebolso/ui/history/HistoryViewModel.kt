@@ -11,5 +11,6 @@ class HistoryViewModel(
 ) : ViewModel() {
 
     val transactions = getTransactionsUseCase()
-        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
 }
+

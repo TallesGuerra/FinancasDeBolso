@@ -107,7 +107,7 @@ fun AddTransactionScreen(
                 onValueChange = { amount = it; amountError = false },
                 label = { Text("Valor") },
                 placeholder = { Text("0,00") },
-                prefix = { Text("R$ ", style = MaterialTheme.typography.bodyLarge) },
+                prefix = { Text("€ ", style = MaterialTheme.typography.bodyLarge) },
                 isError = amountError,
                 supportingText = if (amountError) {
                     { Text("Informe um valor válido") }

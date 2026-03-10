@@ -48,7 +48,7 @@ import com.example.fiancasdebolso.ui.theme.ExpenseRedSurface
 import com.example.fiancasdebolso.ui.theme.FiancasDeBolsoTheme
 import com.example.fiancasdebolso.ui.theme.IncomeGreen
 import com.example.fiancasdebolso.ui.theme.IncomeGreenSurface
-import com.example.fiancasdebolso.ui.utils.toBRL
+import com.example.fiancasdebolso.ui.utils.toCurrency
 import com.example.fiancasdebolso.ui.utils.toFormattedDate
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -180,7 +180,7 @@ fun BalanceCard(balance: Double, totalIncome: Double, totalExpense: Double) {
             )
             Spacer(Modifier.height(4.dp))
             Text(
-                text = balance.toBRL(),
+                text = balance.toCurrency(),
                 style = MaterialTheme.typography.headlineLarge,
                 fontWeight = FontWeight.Bold,
                 color = if (balance >= 0) Color.White else Color(0xFFFF8A80)
@@ -205,7 +205,7 @@ fun BalanceCard(balance: Double, totalIncome: Double, totalExpense: Double) {
                         )
                     }
                     Text(
-                        text = totalIncome.toBRL(),
+                        text = totalIncome.toCurrency(),
                         style = MaterialTheme.typography.bodyLarge,
                         fontWeight = FontWeight.SemiBold,
                         color = Color(0xFF80E57A)
@@ -222,7 +222,7 @@ fun BalanceCard(balance: Double, totalIncome: Double, totalExpense: Double) {
                         )
                     }
                     Text(
-                        text = totalExpense.toBRL(),
+                        text = totalExpense.toCurrency(),
                         style = MaterialTheme.typography.bodyLarge,
                         fontWeight = FontWeight.SemiBold,
                         color = Color(0xFFFF8A80)
@@ -285,7 +285,7 @@ fun TransactionItem(transaction: TransactionEntity) {
             }
 
             Text(
-                text = "$prefix${transaction.amount.toBRL()}",
+                text = "$prefix${transaction.amount.toCurrency()}",
                 style = MaterialTheme.typography.bodyLarge,
                 fontWeight = FontWeight.SemiBold,
                 color = amountColor
