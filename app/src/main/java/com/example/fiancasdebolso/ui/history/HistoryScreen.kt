@@ -34,7 +34,7 @@ import androidx.compose.ui.unit.dp
 import com.example.fiancasdebolso.data.local.entity.TransactionEntity
 import com.example.fiancasdebolso.ui.theme.ExpenseRed
 import com.example.fiancasdebolso.ui.theme.IncomeGreen
-import com.example.fiancasdebolso.ui.utils.toBRL
+import com.example.fiancasdebolso.ui.utils.toCurrency
 import com.example.fiancasdebolso.ui.utils.toFormattedDate
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -128,7 +128,7 @@ fun HistoryItem(transaction: TransactionEntity) {
 
             Column(horizontalAlignment = Alignment.End) {
                 Text(
-                    text = "$prefix${transaction.amount.toBRL()}",
+                    text = "$prefix${transaction.amount.toCurrency()}",
                     style = MaterialTheme.typography.bodyLarge,
                     fontWeight = FontWeight.SemiBold,
                     color = amountColor

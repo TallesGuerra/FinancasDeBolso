@@ -13,3 +13,9 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Claude worktrees
+.claude/worktrees/
+
+# IDE
+.idea/.name
