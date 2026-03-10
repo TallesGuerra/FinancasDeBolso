@@ -7,6 +7,8 @@ import com.example.fiancasdebolso.data.repository.TransactionRepository
 import com.example.fiancasdebolso.domain.usecase.AddTransactionUseCase
 import com.example.fiancasdebolso.domain.usecase.DeleteTransactionUseCase
 import com.example.fiancasdebolso.domain.usecase.GetBalanceUseCase
+import com.example.fiancasdebolso.domain.usecase.GetTotalExpenseUseCase
+import com.example.fiancasdebolso.domain.usecase.GetTotalIncomeUseCase
 import com.example.fiancasdebolso.domain.usecase.GetTransactionsUseCase
 import com.example.fiancasdebolso.ui.add_transaction.AddTransactionViewModel
 import com.example.fiancasdebolso.ui.history.HistoryViewModel
@@ -22,7 +24,9 @@ class ViewModelFactory(
             modelClass.isAssignableFrom(HomeViewModel::class.java) -> HomeViewModel(
                 getTransactionsUseCase = GetTransactionsUseCase(repository),
                 deleteTransactionUseCase = DeleteTransactionUseCase(repository),
-                getBalanceUseCase = GetBalanceUseCase(repository)
+                getBalanceUseCase = GetBalanceUseCase(repository),
+                getTotalIncomeUseCase = GetTotalIncomeUseCase(repository),
+                getTotalExpenseUseCase = GetTotalExpenseUseCase(repository),
             )
             modelClass.isAssignableFrom(AddTransactionViewModel::class.java) -> AddTransactionViewModel(
                 addTransactionUseCase = AddTransactionUseCase(repository)

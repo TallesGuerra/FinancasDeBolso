@@ -11,10 +11,10 @@ import kotlinx.coroutines.flow.Flow
 interface TransactionDao {
 
     @Insert
-    suspend fun insert(transaction: TransactionEntity)
+    suspend fun insert(transaction: TransactionEntity): Long
 
     @Delete
-    suspend fun delete(transaction: TransactionEntity)
+    suspend fun delete(transaction: TransactionEntity): Int
 
     @Query("SELECT * FROM transactions ORDER BY date DESC")
     fun getAllTransactions(): Flow<List<TransactionEntity>>
@@ -22,10 +22,10 @@ interface TransactionDao {
     @Query("SELECT * FROM transactions WHERE type = :type")
     fun getTransactionsByType(type: String): Flow<List<TransactionEntity>>
 
-    @Query("SELECT SUM(amount) FROM transactions WHERE type = 'INCOME'")
+    @Query("SELECT COALESCE(SUM(amount), 0.0) FROM transactions WHERE type = 'INCOME'")
     fun getTotalIncome(): Flow<Double>
 
-    @Query("SELECT SUM(amount) FROM transactions WHERE type = 'EXPENSE'")
+    @Query("SELECT COALESCE(SUM(amount), 0.0) FROM transactions WHERE type = 'EXPENSE'")
     fun getTotalExpense(): Flow<Double>
 
 }
