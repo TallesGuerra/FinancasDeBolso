@@ -1,13 +1,21 @@
-# 💰 Pocket Finances
+# 💰 Finanças de Bolso
 
 ![Android](https://img.shields.io/badge/Platform-Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)
 ![Kotlin](https://img.shields.io/badge/Kotlin-1.9+-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white)
 ![Compose](https://img.shields.io/badge/Jetpack%20Compose-1.5+-4285F4?style=for-the-badge&logo=jetpackcompose&logoColor=white)
-![MVVM](https://img.shields.io/badge/MVVM-FF6F00?style=for-the-badge&logoColor=white)
-![Clean Architecture](https://img.shields.io/badge/Clean_Architecture-FF6F00?style=for-the-badge&logoColor=white)
 ![Material3](https://img.shields.io/badge/Material%203-Design-6200EE?style=for-the-badge)
 
-**Personal finance Android app built with Kotlin and Jetpack Compose, following MVVM and Clean Architecture principles.**
+**Personal finance Android app built with Kotlin and Jetpack Compose to help users track income and expenses.**
+
+---
+
+## 📸 Screenshots
+
+<p align="center">
+  <img src="docs/screenshot1.png" alt="Home Screen" width="250"/>
+  &nbsp;&nbsp;&nbsp;
+  <img src="docs/screenshot2.png" alt="Add Transaction" width="250"/>
+</p>
 
 ---
 
@@ -24,27 +32,28 @@
 
 ## 🏗️ Architecture
 
-This project follows **Clean Architecture** with **MVVM**, separating responsibilities into distinct layers:
-
 ```
-com.example.fiancasdebolso/
+com.example.financasdebolso/
 │
-├── 📱 ui/                              # Presentation layer
-│   ├── MainActivity.kt                # Main entry point
-│   ├── components/                    # Reusable Composables
+├── 📱 MainActivity.kt                  # Main entry point
+│
+├── 🧩 ui/                              # UI layer
+│   ├── components/                    # Reusable UI components
+│   │   ├── BalanceCard.kt             # Total balance display
+│   │   ├── TransactionItem.kt         # Individual transaction card
+│   │   └── TransactionList.kt         # Scrollable transaction history
 │   └── utils/
-│       └── Formatters.kt             # UI utility formatters
+│       └── Formatters.kt              # Currency and date formatters
 │
 ├── 🧠 viewmodel/                       # ViewModel layer
-│   └── FinanceViewModel.kt            # State & operation management
-│                                      # Uses StateFlow + Coroutines
+│   └── FinanceViewModel.kt            # State and operation management
 │
-├── 🎯 domain/                          # Business logic layer
-│   ├── usecase/
-│   │   ├── GetTotalIncomeUseCase.kt   # Calculates total income
-│   │   └── GetTotalExpenseUseCase.kt  # Calculates total expenses
-│   └── model/
-│       └── Transaction.kt             # Domain data model
+├── 🎯 domain/                          # Business logic (Use Cases)
+│   ├── GetTotalIncomeUseCase.kt        # Calculates total income
+│   └── GetTotalExpenseUseCase.kt       # Calculates total expenses
+│
+├── 📊 model/                           # Data models
+│   └── Transaction.kt                 # Transaction data class
 │
 └── 🎨 ui/theme/                        # Material 3 theme
     ├── Color.kt
@@ -52,34 +61,28 @@ com.example.fiancasdebolso/
     └── Type.kt
 ```
 
-### Architecture Layers
-
-- **UI Layer** — Composables observe state from ViewModel via `collectAsState()`
-- **ViewModel** — Exposes state with `StateFlow`, uses `viewModelScope` for Coroutines
-- **Use Cases** — Single-responsibility business logic (one action per class)
-- **Domain Model** — Pure Kotlin data classes, independent of Android framework
-
 ### Design Principles Applied
 
-- **MVVM** — clear separation between UI and business logic
-- **Clean Architecture** — dependencies point inward, domain layer is framework-independent
-- **Single Responsibility** — each Use Case handles one specific operation
+- **MVVM Architecture** — clear separation between UI and business logic
+- **Clean Architecture** — domain layer with dedicated Use Cases
 - **Unidirectional Data Flow** — state flows down, events flow up
+- **Single Responsibility** — each component has one clear purpose
 - **Clean Code** — readable and self-documented code
 
 ---
 
 ## 🔧 Technologies
 
-| Technology          | Version | Description                              |
-|---------------------|---------|------------------------------------------|
-| **Kotlin**          | 1.9+    | Modern, concise Android language         |
-| **Jetpack Compose** | 1.5+    | Declarative and reactive UI toolkit      |
-| **Coroutines**      | 1.7+    | Asynchronous programming                 |
-| **StateFlow**       | —       | Reactive state management                |
-| **ViewModel**       | 2.7+    | Lifecycle-aware state holder             |
-| **Material 3**      | Latest  | Google's design system                   |
-| **Android SDK**     | 24+     | Compatible with 95%+ of devices          |
+| Technology          | Version | Description                         |
+|---------------------|---------|-------------------------------------|
+| **Kotlin**          | 1.9+    | Modern, concise Android language    |
+| **Jetpack Compose** | 1.5+    | Declarative and reactive UI toolkit |
+| **MVVM**            | —       | Architecture pattern                |
+| **Clean Architecture** | —    | Use Cases for business logic        |
+| **Coroutines**      | 1.7+    | Asynchronous programming            |
+| **StateFlow**       | —       | Reactive state management           |
+| **Material 3**      | Latest  | Google's design system              |
+| **Android SDK**     | 24+     | Compatible with 95%+ of devices     |
 
 ---
 
@@ -114,23 +117,25 @@ com.example.fiancasdebolso/
 
 ## 💡 Concepts Demonstrated
 
-- **MVVM architecture** with ViewModel and StateFlow
-- **Clean Architecture** with dedicated Use Case layer
-- **Coroutines** with `viewModelScope.launch` for async operations
-- **Reactive UI** with `collectAsState()` in Composables
-- **Jetpack Compose** layouts, state management and LazyColumn
-- **Material Design 3** components, colors and typography
-- **Separation of concerns** across UI, ViewModel, and Domain layers
+- **MVVM** with ViewModel and StateFlow for reactive state management
+- **Clean Architecture** with dedicated Use Cases for business logic
+- **Coroutines** with `viewModelScope` for asynchronous operations
+- `collectAsState()` for collecting StateFlow in Composables
+- Jetpack Compose layouts and Material Design 3 components
+- List rendering with `LazyColumn`
+- Data modeling with Kotlin data classes
+- Modular and reusable component architecture
 
 ---
 
 ## 🔄 Roadmap
 
-- [x] Income and expense transaction management
+- [x] Add and display transactions
 - [x] Real-time balance calculation
+- [x] Transaction history
 - [x] MVVM architecture with ViewModel + StateFlow
 - [x] Clean Architecture with Use Cases
-- [x] Coroutines for async operations
+- [x] Coroutines integration
 - [ ] Local persistence with Room Database
 - [ ] Expense categories and filters
 - [ ] Monthly spending charts
