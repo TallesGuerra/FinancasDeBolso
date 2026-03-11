@@ -20,6 +20,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -69,7 +71,8 @@ fun HomeScreen(
         totalIncome = totalIncome,
         totalExpense = totalExpense,
         onNavigateToAdd = onNavigateToAdd,
-        onNavigateToHistory = onNavigateToHistory
+        onNavigateToHistory = onNavigateToHistory,
+        onDeleteTransaction = { viewModel.deleteTransaction(it) }
     )
 }
 
@@ -82,6 +85,7 @@ fun HomeScreenContent(
     totalExpense: Double,
     onNavigateToAdd: () -> Unit,
     onNavigateToHistory: () -> Unit,
+    onDeleteTransaction: (TransactionEntity) -> Unit = {},
     modifier: Modifier = Modifier
 ) {
     Scaffold(
@@ -153,7 +157,10 @@ fun HomeScreenContent(
                     contentPadding = PaddingValues(bottom = 80.dp)
                 ) {
                     items(transactions.take(10)) { transaction ->
-                        TransactionItem(transaction = transaction)
+                        TransactionItem(
+                            transaction = transaction,
+                            onDelete = { onDeleteTransaction(transaction) }
+                        )
                     }
                 }
             }
@@ -234,7 +241,7 @@ fun BalanceCard(balance: Double, totalIncome: Double, totalExpense: Double) {
 }
 
 @Composable
-fun TransactionItem(transaction: TransactionEntity) {
+fun TransactionItem(transaction: TransactionEntity, onDelete: () -> Unit = {}) {
     val isIncome = transaction.type == "INCOME"
     val amountColor = if (isIncome) IncomeGreen else ExpenseRed
     val iconBg = if (isIncome) IncomeGreenSurface else ExpenseRedSurface
@@ -290,6 +297,14 @@ fun TransactionItem(transaction: TransactionEntity) {
                 fontWeight = FontWeight.SemiBold,
                 color = amountColor
             )
+
+            IconButton(onClick = onDelete) {
+                Icon(
+                    imageVector = Icons.Default.Delete,
+                    contentDescription = "Excluir transação",
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f)
+                )
+            }
         }
     }
 }

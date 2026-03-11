@@ -15,6 +15,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -85,7 +86,10 @@ fun HistoryScreen(
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 items(transactions) { transaction ->
-                    HistoryItem(transaction = transaction)
+                    HistoryItem(
+                        transaction = transaction,
+                        onDelete = { viewModel.deleteTransaction(transaction) }
+                    )
                 }
             }
         }
@@ -93,7 +97,7 @@ fun HistoryScreen(
 }
 
 @Composable
-fun HistoryItem(transaction: TransactionEntity) {
+fun HistoryItem(transaction: TransactionEntity, onDelete: () -> Unit = {}) {
     val isIncome = transaction.type == "INCOME"
     val amountColor = if (isIncome) IncomeGreen else ExpenseRed
     val prefix = if (isIncome) "+" else "-"
@@ -137,6 +141,14 @@ fun HistoryItem(transaction: TransactionEntity) {
                     text = typeLabel,
                     style = MaterialTheme.typography.bodySmall,
                     color = amountColor.copy(alpha = 0.75f)
+                )
+            }
+
+            IconButton(onClick = onDelete) {
+                Icon(
+                    imageVector = Icons.Default.Delete,
+                    contentDescription = "Excluir transação",
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f)
                 )
             }
         }

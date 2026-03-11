@@ -32,7 +32,8 @@ class ViewModelFactory(
                 addTransactionUseCase = AddTransactionUseCase(repository)
             )
             modelClass.isAssignableFrom(HistoryViewModel::class.java) -> HistoryViewModel(
-                getTransactionsUseCase = GetTransactionsUseCase(repository)
+                getTransactionsUseCase = GetTransactionsUseCase(repository),
+                deleteTransactionUseCase = DeleteTransactionUseCase(repository),
             )
             else -> throw IllegalArgumentException("ViewModel não encontrado")
         } as T
