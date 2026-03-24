@@ -2,18 +2,25 @@ package com.example.fiancasdebolso.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-// Brand — Indigo
-val Indigo80 = Color(0xFF9FA8DA)
-val IndigoGrey80 = Color(0xFFBBBDD6)
-val Teal80 = Color(0xFF80CBC4)
+// Primárias
+val Emerald500    = Color(0xFF10B981)
+val EmeraldDark   = Color(0xFF064E3B)
+val Teal500       = Color(0xFF14B8A6)
 
-val Indigo40 = Color(0xFF3949AB)
-val IndigoGrey40 = Color(0xFF5C6BC0)
-val Teal40 = Color(0xFF00897B)
+// Light mode
+val BackgroundLight = Color(0xFFF0F4F8)
+val CardLight       = Color(0xFFFFFFFF)
+val SurfaceLight    = Color(0xFFF8FAFC)
 
-// Semânticas — usadas diretamente nos composables
-val IncomeGreen = Color(0xFF2E7D32)
-val IncomeGreenSurface = Color(0xFFE8F5E9)
-val ExpenseRed = Color(0xFFC62828)
-val ExpenseRedSurface = Color(0xFFFFEBEE)
-val BalanceCardBg = Color(0xFF283593)   // Indigo 800 — card de saldo
+// Dark mode
+val BackgroundDark  = Color(0xFF080D14)
+val CardDark        = Color(0xFF111827)
+val SurfaceDark     = Color(0xFF1A2235)
+
+// Semânticas
+val IncomeGreen        = Color(0xFF10B981)
+val IncomeGreenSurface = Color(0xFFD1FAE5)
+val ExpenseRed         = Color(0xFFEF4444)
+val ExpenseRedSurface  = Color(0xFFFEE2E2)
+val WarningAmber       = Color(0xFFF59E0B)
+val PurpleSecondary    = Color(0xFF8B5CF6)

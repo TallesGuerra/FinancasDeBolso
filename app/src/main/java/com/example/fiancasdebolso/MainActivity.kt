@@ -6,7 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.example.fiancasdebolso.ui.AppNavigation
-import com.example.fiancasdebolso.ui.theme.FiancasDeBolsoTheme
+import com.example.fiancasdebolso.ui.theme.PocketFinanceTheme
 
 
 class MainActivity : ComponentActivity() {
@@ -14,7 +14,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            FiancasDeBolsoTheme {
+            PocketFinanceTheme {
                 val app = application as FinancasApp
                 AppNavigation(repository = app.repository)
                 }
