@@ -16,7 +16,7 @@ import com.example.fiancasdebolso.ui.history.HistoryScreen
 import com.example.fiancasdebolso.ui.history.HistoryViewModel
 import com.example.fiancasdebolso.ui.home.HomeScreen
 import com.example.fiancasdebolso.ui.home.HomeViewModel
-import com.example.fiancasdebolso.ui.theme.FiancasDeBolsoTheme
+import com.example.fiancasdebolso.ui.theme.PocketFinanceTheme
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 
@@ -87,7 +87,7 @@ fun AppNavigationPreview() {
         override fun getTotalExpense(): Flow<Double> = MutableStateFlow(1200.0)
     }
     val repository = TransactionRepository(fakeDao)
-    FiancasDeBolsoTheme {
+    PocketFinanceTheme {
         AppNavigation(repository = repository)
     }
 }

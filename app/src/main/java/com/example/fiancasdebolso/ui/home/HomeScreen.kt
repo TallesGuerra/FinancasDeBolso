@@ -44,10 +44,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.fiancasdebolso.data.local.entity.TransactionEntity
-import com.example.fiancasdebolso.ui.theme.BalanceCardBg
+import com.example.fiancasdebolso.ui.theme.EmeraldDark
 import com.example.fiancasdebolso.ui.theme.ExpenseRed
 import com.example.fiancasdebolso.ui.theme.ExpenseRedSurface
-import com.example.fiancasdebolso.ui.theme.FiancasDeBolsoTheme
+import com.example.fiancasdebolso.ui.theme.PocketFinanceTheme
 import com.example.fiancasdebolso.ui.theme.IncomeGreen
 import com.example.fiancasdebolso.ui.theme.IncomeGreenSurface
 import com.example.fiancasdebolso.ui.utils.toCurrency
@@ -173,7 +173,7 @@ fun BalanceCard(balance: Double, totalIncome: Double, totalExpense: Double) {
     Card(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(containerColor = BalanceCardBg)
+        colors = CardDefaults.cardColors(containerColor = EmeraldDark)
     ) {
         Column(
             modifier = Modifier
@@ -351,7 +351,7 @@ fun HomeScreenPreview() {
             date = System.currentTimeMillis() - 86_400_000L
         )
     )
-    FiancasDeBolsoTheme {
+    PocketFinanceTheme {
         HomeScreenContent(
             transactions = sampleTransactions,
             balance = 3800.0,
