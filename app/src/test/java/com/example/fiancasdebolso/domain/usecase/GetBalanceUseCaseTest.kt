@@ -22,7 +22,7 @@ class GetBalanceUseCaseTest {
 
     @Test
     fun `quando receita maior que despesa, saldo deve ser positivo`() = runTest{
-        //DAO
+        //DADO
         every { repository.getTotalIncome()} returns flowOf(5000.0)
         every {repository.getTotalExpense()} returns flowOf(1200.0)
 
