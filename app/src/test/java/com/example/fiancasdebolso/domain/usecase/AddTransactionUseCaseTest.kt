@@ -2,16 +2,17 @@ package com.example.fiancasdebolso.domain.usecase
 
 import com.example.fiancasdebolso.data.local.entity.TransactionEntity
 import com.example.fiancasdebolso.data.repository.TransactionRepository
+
+import org.junit.Before
+import org.junit.Test
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.just
 import io.mockk.mockk
 import io.mockk.runs
-
 import kotlinx.coroutines.test.runTest
 import kotlin.test.assertFailsWith
-import org.junit.Before
-import org.junit.Test
+
 
 class AddTransactionUseCaseTest {
     private val repository: TransactionRepository = mockk()
